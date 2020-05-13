@@ -1,5 +1,9 @@
 package com.leetcode.math;
 
+/*
+ * 7. Reverse Integer
+ * https://github.com/sushanthbangera/leetcode/tree/master/src/com/leetcode
+ */
 public class ReverseInteger {
 
 	public int reverse(int x) {
