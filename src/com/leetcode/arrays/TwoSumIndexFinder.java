@@ -17,9 +17,9 @@ public class TwoSumIndexFinder {
 		Map<Integer, Integer> indexMap = new HashMap<>();
 
 		for (int i = 0; i < len; i++) {
-			int coplement = target - nums[i];
-			if (indexMap.containsKey(coplement)) {
-				return new int[] {i, indexMap.get(coplement)};
+			int complement = target - nums[i];
+			if (indexMap.containsKey(complement)) {
+				return new int[] {i, indexMap.get(complement)};
 			}
 			indexMap.put(nums[i], i);
 		}
