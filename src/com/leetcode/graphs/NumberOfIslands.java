@@ -32,7 +32,7 @@ public class NumberOfIslands {
 		if (i < 0 || i >= grid.length || j < 0 || j >= grid[i].length || grid[i][j] == '0') {
 			return;
 		}
-		// mark the grid visited and its surrounding grids '0'
+		// mark the grid visited and its surrounding grids '0' to mark it as the part of current island
 		grid[i][j] = '0';
 		BFS(grid, i + 1, j);
 		BFS(grid, i - 1, j);

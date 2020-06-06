@@ -6,6 +6,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import com.leetcode.utils.ArrayUtils;
+
 /*
  * 937. Reorder Data in Log Files
  * https://leetcode.com/problems/reorder-data-in-log-files/
@@ -48,33 +50,18 @@ public class LogFileSorter {
 			}
 		}
 
-		Collections.sort(letterLogs, new Comparator<String>() {
-			@Override
-			public int compare(String o1, String o2) {
-				String[] s1 = o1.split("\\s+");
-				String[] s2 = o2.split("\\s+");
+		Collections.sort(letterLogs, (o1, o2) -> {
+			String[] s1 = o1.split("\\s+", 2);
+			String[] s2 = o2.split("\\s+", 2);
 
-				StringBuilder sb1 = new StringBuilder();
-				StringBuilder sb2 = new StringBuilder();
-
-				for (int i = 1; i < s1.length; i++) {
-					sb1.append(s1[i]).append(" ");
-				}
-
-				for (int i = 1; i < s2.length; i++) {
-					sb2.append(s2[i]).append(" ");
-				}
-
-				if (sb1.toString().compareTo(sb2.toString()) == 0) {
-					return s1[0].compareTo(s2[0]);
-				}
-
-				return sb1.toString().compareTo(sb2.toString());
+			if (s1[1].compareTo(s2[1]) == 0) {
+				return s1[0].compareTo(s2[0]);
 			}
+			return s1[1].compareTo(s2[1]);
 		});
 
 		String[] ans = new String[logs.length];
-
+		
 		int i = 0;
 		for (String log : letterLogs) {
 			ans[i++] = log;
@@ -85,5 +72,25 @@ public class LogFileSorter {
 		}
 
 		return ans;
+	}
+
+	public static void main(String[] args) {
+		String logs[] = { "dig1 8 1 5 1", "let1 art can", "dig2 3 6", "let2 own kit dig", "let3 art zero" };
+		ArrayUtils.print(logs);
+
+		System.out.println("---------------------");
+
+		LogFileSorter logFileSorter = new LogFileSorter();
+
+		String[] sortedLogs = logFileSorter.reorderLogFiles(logs);
+		ArrayUtils.print(sortedLogs);
+
+		System.out.println("---------------------");
+
+		String logs2[] = { "dig1 8 1 5 1", "let1 art can", "dig2 3 6", "let2 own kit dig", "let3 art zero" };
+
+		sortedLogs = logFileSorter.reorderLogFiles2(logs2);
+		ArrayUtils.print(sortedLogs);
+
 	}
 }
