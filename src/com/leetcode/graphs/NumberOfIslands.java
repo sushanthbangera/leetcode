@@ -20,23 +20,23 @@ public class NumberOfIslands {
 			for (int j = 0; j < col; j++) {
 				if (grid[i][j] == '1') {
 					count += 1;
-					BFS(grid, i, j);
+					DFS(grid, i, j);
 				}
 			}
 		}
 		return count;
 	}
 
-	private void BFS(char[][] grid, int i, int j) {
+	private void DFS(char[][] grid, int i, int j) {
 
 		if (i < 0 || i >= grid.length || j < 0 || j >= grid[i].length || grid[i][j] == '0') {
 			return;
 		}
 		// mark the grid visited and its surrounding grids '0' to mark it as the part of current island
 		grid[i][j] = '0';
-		BFS(grid, i + 1, j);
-		BFS(grid, i - 1, j);
-		BFS(grid, i, j - 1);
-		BFS(grid, i, j + 1);
+		DFS(grid, i + 1, j);
+		DFS(grid, i - 1, j);
+		DFS(grid, i, j - 1);
+		DFS(grid, i, j + 1);
 	}
 }
