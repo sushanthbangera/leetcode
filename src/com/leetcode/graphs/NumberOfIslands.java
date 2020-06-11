@@ -6,6 +6,9 @@ package com.leetcode.graphs;
  */
 public class NumberOfIslands {
 
+	/*
+	 * Time Complexity: O(mn)  -> O(ROW x COL)
+	 */
 	public int numIslands(char[][] grid) {
 
 		if (grid.length == 0) {
@@ -27,16 +30,16 @@ public class NumberOfIslands {
 		return count;
 	}
 
-	private void DFS(char[][] grid, int i, int j) {
+	private void DFS(char[][] grid, int row, int col) {
 
-		if (i < 0 || i >= grid.length || j < 0 || j >= grid[i].length || grid[i][j] == '0') {
+		if (row < 0 || row >= grid.length || col < 0 || col >= grid[row].length || grid[row][col] == '0') {
 			return;
 		}
 		// mark the grid visited and its surrounding grids '0' to mark it as the part of current island
-		grid[i][j] = '0';
-		DFS(grid, i + 1, j);
-		DFS(grid, i - 1, j);
-		DFS(grid, i, j - 1);
-		DFS(grid, i, j + 1);
+		grid[row][col] = '0';
+		DFS(grid, row + 1, col);
+		DFS(grid, row - 1, col);
+		DFS(grid, row, col - 1);
+		DFS(grid, row, col + 1);
 	}
 }
