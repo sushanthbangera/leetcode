@@ -1,7 +1,9 @@
 package com.leetcode.arrays;
 
 import java.util.Arrays;
-
+/*
+ *  Given a list of schedules, check if a user can attend all the meetings
+ */
 public class AttendMeetings {
 
 	class Interval {
