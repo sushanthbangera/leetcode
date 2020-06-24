@@ -16,7 +16,16 @@ public class ArrayUtils {
 	public static void print(Integer[] arr) {
 		if (arr != null) {
 			for (Integer s : arr) {
-				System.out.println(s + SPACE);
+				System.out.print(s + SPACE);
+			}
+		}
+		System.out.println();
+	}
+	
+	public static void print(int[] arr) {
+		if (arr != null) {
+			for (Integer s : arr) {
+				System.out.print(s + SPACE);
 			}
 		}
 		System.out.println();
