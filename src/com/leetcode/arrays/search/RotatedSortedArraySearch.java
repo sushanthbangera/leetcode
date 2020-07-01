@@ -61,12 +61,39 @@ public class RotatedSortedArraySearch {
 		return binarySearch(arr, mid + 1, high, key);
 	}
 	
+	public int search(int nums[], int low, int high, int target) {
+		
+		if (low > high) return -1;
+		
+		int mid = (low + high) / 2;
+		
+		if (nums[mid] == target) return mid;
+		
+		// nums[low----mid] is sorted
+		if (nums[low] <= nums[mid]) {
+			
+			if (target <= nums[mid] && target >= nums[low]) {
+				return search(nums, low, mid - 1, target);
+			}
+			
+			return search(nums, mid + 1, high, target);
+		}
+		
+		if (target >= nums[mid] && target <= nums[high]) {
+			return search(nums, mid + 1, high, target);
+		}
+		
+		return search(nums, low, mid - 1, target);
+	}
+	
 	public static void main(String[] args) {
 		
 		int arr[] = {4, 5, 6, 7, 8, 0, 1, 2};
 		
 		RotatedSortedArraySearch rotArrSearch = new RotatedSortedArraySearch();
 		System.out.println(rotArrSearch.search(arr, 5));
+		
+		System.out.println(rotArrSearch.search(arr, 0, arr.length - 1, 5));
 	}
 
 }
