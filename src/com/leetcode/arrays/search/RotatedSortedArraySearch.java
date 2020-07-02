@@ -88,12 +88,14 @@ public class RotatedSortedArraySearch {
 	
 	public static void main(String[] args) {
 		
-		int arr[] = {4, 5, 6, 7, 8, 0, 1, 2};
+		//int arr[] = {4, 5, 6, 7, 8, 0, 1, 2};
+		
+		int arr[] = {1, 2, 3};
 		
 		RotatedSortedArraySearch rotArrSearch = new RotatedSortedArraySearch();
-		System.out.println(rotArrSearch.search(arr, 5));
+		System.out.println(rotArrSearch.search(arr, 1));
 		
-		System.out.println(rotArrSearch.search(arr, 0, arr.length - 1, 5));
+		System.out.println(rotArrSearch.search(arr, 0, arr.length - 1, 1));
 	}
 
 }
