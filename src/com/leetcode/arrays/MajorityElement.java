@@ -11,7 +11,8 @@ import java.util.Map;
 public class MajorityElement {
 
 	/*
-	 * Time: O(nlogn) Space: O(1) - if solving in place is allowed else O(n) space for temp array
+	 * Time: O(nlogn) Space: O(1) - if solving in place is allowed else O(n) space
+	 * for temp array
 	 */
 	public int majorityElement(int[] nums) {
 		Arrays.sort(nums);
@@ -37,4 +38,21 @@ public class MajorityElement {
 		return -1;
 	}
 
+	/*
+	 * Boyer-Moore Voting Algorithm Time: O(n) Space: O(1)
+	 */
+	public int majorityElement3(int[] nums) {
+
+		int candidate = 0;
+		int count = 0;
+
+		for (int num : nums) {
+			if (count == 0) {
+				candidate = num;
+			}
+			count += (num == candidate) ? 1 : -1;
+		}
+
+		return candidate;
+	}
 }
