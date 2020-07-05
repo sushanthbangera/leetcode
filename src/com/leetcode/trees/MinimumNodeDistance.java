@@ -53,9 +53,9 @@ public class MinimumNodeDistance {
 		if (root == null) {
 			return;
 		}
-		inOrder(root.left);
+		inOrder(root.left, list);
 		list.add(root.val);
-		inOrder(root.right);
+		inOrder(root.right, list);
 	}
 	
 }
