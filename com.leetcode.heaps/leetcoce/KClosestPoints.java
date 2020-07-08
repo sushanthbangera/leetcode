@@ -56,15 +56,14 @@ public class KClosestPoints {
 	}
 
 	/*
-	 * Time: O(NlogN) - N length of points
-	 * Space: O(N) for distance Arrays
+	 * Time: O(NlogN) - N length of points Space: O(N) for distance Arrays
 	 */
 	public int[][] kClosestLeetCode(int[][] points, int K) {
 		int N = points.length;
 		int[] dists = new int[N];
 
 		for (int i = 0; i < N; ++i) {
-			dists[i] = dist(points[i]);
+			dists[i] = distance(points[i]);
 		}
 
 		Arrays.sort(dists);
@@ -72,13 +71,15 @@ public class KClosestPoints {
 
 		int[][] ans = new int[K][2];
 		int t = 0;
+
 		for (int i = 0; i < N; ++i)
-			if (dist(points[i]) <= distK)
+			if (distance(points[i]) <= distK) {
 				ans[t++] = points[i];
+			}
 		return ans;
 	}
 
-	public int dist(int[] point) {
+	public int distance(int[] point) {
 		return point[0] * point[0] + point[1] * point[1];
 	}
 }
