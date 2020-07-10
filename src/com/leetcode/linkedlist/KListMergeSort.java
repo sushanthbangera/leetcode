@@ -20,7 +20,7 @@ public class KListMergeSort {
 	 */
 	public ListNode mergeKLists(ListNode[] lists) {
 
-		PriorityQueue<ListNode> q = new PriorityQueue<>((ListNode a, ListNode b) -> a.val - b.val);
+		PriorityQueue<ListNode> q = new PriorityQueue<>((a, b) -> a.val - b.val);
 
 		for (int i = 0; i < lists.length; i++) {
 			if (lists[i] != null) {
