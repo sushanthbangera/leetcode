@@ -1,6 +1,5 @@
 package com.leetcode.strings;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -11,39 +10,16 @@ import java.util.Map;
 public class FirstUniqueCharacter {
 
 	/*
-	 * Time: O(n)  Space: O(n)
+	 * Time: O(n) Space: O(1) // max 26 characters
 	 */
-	public int firstUniqChar(String s) {
-		int len = s.length();
-		Map<Character, CountIndex> freqMap = new HashMap<>();
-		int result = Integer.MAX_VALUE;
-
-		if (s == null || len == 0)
-			return -1;
-
-		for (int i = 0; i < len; i++) {
-			char ch = s.charAt(i);
-			if (freqMap.containsKey(ch)) {
-				freqMap.get(ch).increment();
-			} else {
-				freqMap.put(ch, new CountIndex(i));
-			}
-		}
-
-		for (Map.Entry<Character, CountIndex> m : freqMap.entrySet()) {
-			if (m.getValue().getCount() == 1 && m.getValue().getIndex() < result) {
-				result = m.getValue().getIndex();
-			}
-		}
-		return result != Integer.MAX_VALUE ? result : -1;
-	}
-
 	public int firstUniqChar2(String s) {
-		int len = s.length();
+
 		Map<Character, Integer> freqMap = new LinkedHashMap<>();
 
-		if (s == null || len == 0)
+		if (s == null || s.length() == 0) {
 			return -1;
+		}
+		int len = s.length();
 
 		for (int i = 0; i < len; i++) {
 			char ch = s.charAt(i);
@@ -56,10 +32,8 @@ public class FirstUniqueCharacter {
 				return i;
 			}
 		}
-
 		return -1;
 	}
-
 }
 
 class CountIndex {
