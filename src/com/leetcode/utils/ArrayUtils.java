@@ -30,6 +30,15 @@ public class ArrayUtils {
 		}
 		System.out.println();
 	}
+	
+	public static void print(char[] arr) {
+		if (arr != null) {
+			for (char s : arr) {
+				System.out.print(s + SPACE);
+			}
+		}
+		System.out.println();
+	}
 
 	public static <T> void print(T[] arr) {
 		if (arr != null) {

@@ -36,4 +36,11 @@ public class ReverseWords {
 		}
 		return new String(w);
 	}
+	
+	public static void main(String[] args) {
+		ReverseWords rw = new ReverseWords();
+		String s = "I am in love with leetcode";
+		System.out.println(rw.reverseWords(s));
+		
+	}
 }
