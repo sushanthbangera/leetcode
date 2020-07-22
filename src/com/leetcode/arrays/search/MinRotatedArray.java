@@ -7,31 +7,26 @@ package com.leetcode.arrays.search;
 public class MinRotatedArray {
 
 	/*
-	 * Iterative Solution
+	 * Time: O(logN)  Space: O(1)
 	 */
 	public int findMin(int[] nums) {
 
 		int len = nums.length;
 
 		int low = 0, high = len - 1;
-		int target = nums[high];
 
-		while (low + 1 < high) {
+		while (low < high) {
 
 			int mid = (low + high) / 2;
 
-			if (nums[mid] <= target) {
-				high = mid;
+			if (nums[mid] > nums[high]) {
+				low = mid + 1;
 			} else {
-				low = mid;
+				high = mid;
 			}
 		}
 
-		if (nums[low] <= target) {
-			return nums[low];
-		} else {
-			return nums[high];
-		}
+		return nums[low];
 	}
 
 	/*
@@ -71,5 +66,13 @@ public class MinRotatedArray {
 		}
 
 		return findMin(nums, low, mid - 1);
+	}
+	
+	public static void main(String[] args) {
+		MinRotatedArray rotArray = new MinRotatedArray();
+		int arr[] = {2, 3, 4, 5, 6, 1}; // ascending rotated
+		System.out.println(rotArray.findMin(arr));
+		int arr2[] = {3, 2, 1, 6, 5, 4}; // descending rotated
+		System.out.println(rotArray.findMin(arr2));
 	}
 }
