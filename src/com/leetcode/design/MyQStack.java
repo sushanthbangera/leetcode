@@ -23,7 +23,7 @@ public class MyQStack {
 	 * ---------------------------- push in O(1) and pop in O(N) --------
 	 * 
 	 */
-	/** Push element x onto stack. O(1)*/ 
+	/** Push element x onto stack. O(1) */
 	public void push(int x) {
 		queue1.add(x);
 		top = x;
@@ -35,15 +35,16 @@ public class MyQStack {
 		if (empty()) {
 			return -1;
 		}
-		int element = -1;
 		while (queue1.size() > 1) {
-			element = queue1.remove();
-			queue2.add(element);
+			top = queue1.remove();
+			queue2.add(top);
 		}
-		element = queue1.remove();
+		int element = queue1.remove();
+
 		Queue<Integer> temp = queue1;
 		queue1 = queue2;
 		queue2 = temp;
+
 		return element;
 	}
 
@@ -59,12 +60,12 @@ public class MyQStack {
 	public boolean empty() {
 		return queue1.isEmpty();
 	}
-	
+
 	/*
 	 * ---------------------------- push in O(N) and pop in O(1) --------
 	 * 
 	 */
-	/** Push element x onto stack. O(1)*/ 
+	/** Push element x onto stack. O(1) */
 	public void push2(int x) {
 		queue2.add(x);
 		top = x;
@@ -75,14 +76,14 @@ public class MyQStack {
 			queue2 = temp;
 		}
 	}
-	
+
 	public int pop2() {
 		if (!queue1.isEmpty()) {
 			return queue1.remove();
 		}
 		return -1;
 	}
-	
+
 	/*
 	 * ------------------------Using one Queue push in O(N) and pop in O(1) --------
 	 * 
@@ -90,10 +91,21 @@ public class MyQStack {
 	public void push3(int x) {
 		queue1.add(x);
 		top = x;
-		
+
 		int size = queue1.size();
 		while (size > 1) {
 			queue1.add(queue1.remove());
 		}
+	}
+
+	public static void main(String[] args) {
+		MyQStack stack = new MyQStack();
+
+		stack.push(1);
+
+		System.out.println("Pop: " + stack.pop());
+
+		System.out.println("Isempty " + stack.empty());
+
 	}
 }
