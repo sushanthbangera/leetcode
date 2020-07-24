@@ -90,7 +90,7 @@ public class LargestRectangleInHistogram {
 	 * Tushar Roy
 	 * https://github.com/mission-peace/interview/blob/master/src/com/interview/stackqueue/MaximumHistogram.java
 	 */
-	public static int largestRectangleArea3(int[] height) {
+	public int largestRectangleArea3(int[] height) {
 		if (height == null || height.length == 0) {
 			return 0;
 		}
@@ -135,5 +135,16 @@ public class LargestRectangleInHistogram {
 		}
 		return maxArea;
 
+	}
+	
+	
+	public static void main(String[] args) {
+		
+		int height[] = {1, 2, 2, 1, 3, 4, 1, 2};
+		LargestRectangleInHistogram lRect = new  LargestRectangleInHistogram();
+		System.out.println(lRect.largestRectangleArea(height));
+		System.out.println(lRect.largestRectangleArea2(height));
+		System.out.println(lRect.largestRectangleArea3(height));
+		
 	}
 }
