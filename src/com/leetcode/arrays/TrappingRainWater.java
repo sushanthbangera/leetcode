@@ -1,5 +1,7 @@
 package com.leetcode.arrays;
 
+import java.util.Stack;
+
 /*
  *  42. Trapping Rain Water
  *  https://leetcode.com/problems/trapping-rain-water/
@@ -7,7 +9,8 @@ package com.leetcode.arrays;
 public class TrappingRainWater {
 
 	/*
-	 * Time Complexity: O(n) - Only one traversal of the array is needed, So time Complexity is O(n).
+	 * Run time is 3 times the length of the array
+	 * Time Complexity: O(n)
 	   Space Complexity: O(n) - Two extra array is needed each of size n.
 	 */
 	public int getTrappedUnits(int[] height) {
@@ -41,5 +44,73 @@ public class TrappingRainWater {
 
 		return level;
 	}
+	
+	/*
+	 * Time complexity: O(n)
+	 * Single iteration of O(n) in which each bar can be touched at most
+	 * twice(due to insertion and deletion from stack) and insertion and 
+	 * deletion from stack takes O(1) time.
+	 * 
+     * Space complexity: O(n). Stack can take upto O(n) space in case of stairs-like or flat structure.
+	 */
+	public int getTrappedUnits2(int[] height) {
+		
+		Stack<Integer> stack = new Stack<>();
+	    int trappedLevel = 0;
+	    int currentBuilding = 0;
+	    
+	    while (currentBuilding < height.length) {
+	    	
+	    	while (!stack.isEmpty() && height[currentBuilding] > height[stack.peek()]) {
+	    		
+	    		int top = stack.pop(); // previous building is smaller than current
+	    		
+	    		if (stack.isEmpty()) {
+	    			break;
+	    		}
+	    		
+	    		int distance = (currentBuilding - stack.peek()) - 1; // trapped between building
+	    		
+	    		int trappedHeight = Math.min(height[currentBuilding], height[stack.peek()]) - height[top];
+	    		
+	    		trappedLevel += distance * trappedHeight;
+	    	}
+	    	stack.push(currentBuilding++);
+	    }
+	    return trappedLevel;
+	}
 
+/*
+ * Time: O(N)   Space: O(1)
+ */
+	public int getTrappedUnits3(int[] height) {
+		int n = height.length;
+		int left = 0, right = n - 1;
+		int leftMax = 0, rightMax = 0;
+		
+		int level = 0;
+		
+		while (left < right) {
+			
+			if (height[left] < height[right]) {
+				
+				if (height[left] >= leftMax) {
+					leftMax = height[left];
+				} else {
+					level += leftMax - height[left]; 
+				}
+				++left;
+				
+			} else {
+				
+				if (height[right] >= rightMax) {
+					rightMax = height[right];
+				} else {
+					level+= rightMax - height[right];
+				}
+				--right;
+			}
+		}
+		return level;
+	}
 }
