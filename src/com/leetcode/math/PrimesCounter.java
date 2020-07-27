@@ -6,6 +6,9 @@ package com.leetcode.math;
  */
 public class PrimesCounter {
 
+	/*
+	 * run time is twice the value of n Time: O(N) Space: O(N)
+	 */
 	public int countPrimes(int n) {
 
 		// considering non primes since O(n) is required to make each index true;
@@ -24,10 +27,19 @@ public class PrimesCounter {
 			if (!nonPrimes[k]) {
 				primeCount++;
 			}
+			if (!nonPrimes[k] && n % k == 0) {
+				System.out.println("The prime factor is: " + k);
+
+			}
+
 		}
 		return primeCount;
 	}
 
+	/*
+	 * run time is thrice the value of n to set default value as true Time: O(N)
+	 * Space: O(N)
+	 */
 	public int countPrimes2(int n) {
 
 		boolean primes[] = new boolean[n];
@@ -57,7 +69,7 @@ public class PrimesCounter {
 	}
 
 	public static void main(String[] args) {
-		int n = 5;
+		int n = 1000;
 		PrimesCounter pc = new PrimesCounter();
 		System.out.println("No. of Primes: " + pc.countPrimes(n));
 	}
