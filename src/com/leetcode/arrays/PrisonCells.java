@@ -6,6 +6,10 @@ import com.leetcode.utils.ArrayUtils;
 
 public class PrisonCells {
 
+	/*
+	 * If first operation if it repeats after x cycles then it would keep repeating,
+	 * so N = N % cycle;
+	 */
 	public int[] prisonAfterNDays(int[] cells, int N) {
 
 		int cycle = 1;

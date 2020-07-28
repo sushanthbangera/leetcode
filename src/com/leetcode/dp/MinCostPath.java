@@ -1,11 +1,37 @@
 package com.leetcode.dp;
 
 /*
- * Time: O(m*n) Space: O(m*n)
+ * 64. Minimum Path Sum
+ * https://leetcode.com/problems/minimum-path-sum/
  */
 public class MinCostPath {
 
+	/*
+	 * Time: O(m*n) Space: O(m*n)
+	 */
 	public int minPathSum(int[][] grid) {
+
+		if (grid == null || grid.length == 0)
+			return 0;
+
+		int dp[][] = new int[grid.length][grid[0].length];
+
+		for (int i = 0; i < grid.length; i++) {
+			for (int j = 0; j < grid[0].length; j++) {
+				dp[i][j] = grid[i][j];
+				if (i > 0 && j > 0) {
+					dp[i][j] += Math.min(dp[i - 1][j], dp[i][j - 1]);
+				} else if (i > 0) {
+					dp[i][j] += dp[i - 1][j];
+				} else if (j > 0) {
+					dp[i][j] += dp[i][j - 1];
+				}
+			}
+		}
+		return dp[dp.length - 1][dp[0].length - 1];
+	}
+
+	public int minPathSum2(int[][] grid) {
 
 		int m = grid.length;
 		int n = grid[0].length;
@@ -32,4 +58,5 @@ public class MinCostPath {
 
 		return dp[m][n];
 	}
+
 }

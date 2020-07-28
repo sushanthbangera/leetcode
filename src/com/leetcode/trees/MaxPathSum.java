@@ -8,7 +8,26 @@ public class MaxPathSum {
 
 	private static int max = Integer.MIN_VALUE;
 
+	int maxValue;
+
 	public int maxPathSum(TreeNode root) {
+		maxValue = Integer.MIN_VALUE;
+		maxPathDown(root);
+		return maxValue;
+	}
+
+	private int maxPathDown(TreeNode node) {
+		if (node == null)
+			return 0;
+		
+		int left = Math.max(0, maxPathDown(node.left));
+		int right = Math.max(0, maxPathDown(node.right));
+		
+		maxValue = Math.max(maxValue, left + right + node.val);
+		return Math.max(left, right) + node.val;
+	}
+
+	public int maxPathSum2(TreeNode root) {
 		if (root == null)
 			return 0;
 		int val = calculatePathSum(root);
@@ -46,6 +65,9 @@ public class MaxPathSum {
 		tree.right.right.left = new TreeNode(3);
 		tree.right.right.right = new TreeNode(4);
 
-		System.out.println("maximum path sum is : " + new MaxPathSum().maxPathSum(tree));
+		TreeNode tree2 = new TreeNode(1);
+
+		// tree2.left = new TreeNode(2);
+		System.out.println("maximum path sum is : " + new MaxPathSum().maxPathSum(tree2));
 	}
 }
