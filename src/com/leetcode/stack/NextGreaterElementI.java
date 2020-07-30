@@ -66,4 +66,5 @@ public class NextGreaterElementI {
 		
 		return result;
 	}
+	
 }
