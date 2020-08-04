@@ -28,16 +28,24 @@ public class EditDistance {
 			dp[0][i2] = i2; // Min.operations = i2;
 		}
 
-		for (int i1 = 1; i1 <= len1; i1++) {
-			for (int i2 = 1; i2 <= len2; i2++) {
-				if (word1.charAt(i1 - 1) == word2.charAt(i2 - 1)) {
-					dp[i1][i2] = dp[i1 - 1][i2 - 1];
+		for (int row = 1; row <= len1; row++) {
+			for (int col = 1; col <= len2; col++) {
+				if (word1.charAt(row - 1) == word2.charAt(col - 1)) {
+					dp[row][col] = dp[row - 1][col - 1];
 				} else {
-					dp[i1][i2] = 1 + Math.min(dp[i1 - 1][i2 - 1], Math.min(dp[i1 - 1][i2], dp[i1][i2 - 1]));
+					dp[row][col] = 1 + Math.min(dp[row - 1][col - 1], Math.min(dp[row - 1][col], dp[row][col - 1]));
 				}
 			}
 		}
 
 		return dp[len1][len2];
+	}
+	
+	public static void main(String[] args) {
+		String s1 = "elephant";
+		String s2 = "elpant";
+		
+		EditDistance ed = new EditDistance();
+		System.out.println(ed.minDistance(s1, s2));
 	}
 }
