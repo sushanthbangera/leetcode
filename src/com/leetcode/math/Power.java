@@ -6,6 +6,9 @@ package com.leetcode.math;
  */
 public class Power {
 
+	/*
+	 * Time: O(logn) Space: O(logn) for stack
+	 */
 	public double myPow(double x, int n) {
 
 		if (n == 0)
