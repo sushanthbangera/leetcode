@@ -1,18 +1,23 @@
-package com.leetcode.trees;
+package com.leetcode.trees.traversal;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Stack;
+
+import com.leetcode.trees.TreeNode;
 
 /*
- * 102. Binary Tree Level Order Traversal
- * https://leetcode.com/problems/binary-tree-level-order-traversal/
+ * 107. Binary Tree Level Order Traversal II
+ * https://leetcode.com/problems/binary-tree-level-order-traversal-ii/
  */
-public class LevelOrder {
+public class LevelOrderBottom {
 
-	public List<List<Integer>> levelOrder(TreeNode root) {
+	public List<List<Integer>> levelOrderBottom(TreeNode root) {
 
+		// Store each level elements list in a stack and finally add it to resultList
+		Stack<List<Integer>> resultStack = new Stack<>();
 		List<List<Integer>> resultList = new ArrayList<>();
 
 		if (root == null)
@@ -26,7 +31,7 @@ public class LevelOrder {
 			int size = queue.size();
 
 			List<Integer> levelList = new ArrayList<>();
-			resultList.add(levelList);
+			resultStack.push(levelList);
 
 			while (size-- > 0) {
 
@@ -42,6 +47,11 @@ public class LevelOrder {
 				}
 			}
 		}
+
+		while (!resultStack.isEmpty()) {
+			resultList.add(resultStack.pop());
+		}
+		
 		return resultList;
 	}
 }

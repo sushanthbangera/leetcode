@@ -1,8 +1,10 @@
-package com.leetcode.trees;
+package com.leetcode.trees.traversal;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+
+import com.leetcode.trees.TreeNode;
 
 /*
  * 103. Binary Tree Zigzag Level Order Traversal

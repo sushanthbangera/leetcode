@@ -1,4 +1,6 @@
-package com.leetcode.trees;
+package com.leetcode.trees.pathsum;
+
+import com.leetcode.trees.TreeNode;
 
 /*
  * 124. Binary Tree Maximum Path Sum

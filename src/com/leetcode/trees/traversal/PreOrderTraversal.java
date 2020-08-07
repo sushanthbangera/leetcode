@@ -1,7 +1,9 @@
-package com.leetcode.trees;
+package com.leetcode.trees.traversal;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.leetcode.trees.TreeNode;
 
 /*
  * 144. Binary Tree Preorder Traversal
