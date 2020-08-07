@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.leetcode.trees.PreOrderTraversal;
 import com.leetcode.trees.TreeNode;
+import com.leetcode.trees.traversal.PreOrderTraversal;
 
 /*
  * 106. Construct Binary Tree from Inorder and Postorder Traversal
