@@ -10,7 +10,7 @@ import java.util.Queue;
 public class RottingOranges {
 
 	/*
-	 * 
+	 * Time: O(m*n)  Space: O(m*n) 
 	 */
 	public int orangesRotting(int[][] grid) {
 
