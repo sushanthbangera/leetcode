@@ -9,6 +9,11 @@ import java.util.List;
  */
 public class PascalsTriangleII {
 
+	/*
+	 * Time: O(numRows^2) -> Rows updates: 1 + 2 + 3 + .... +numRows => numRows*(numRows+1)/2 
+	 * 
+	 * Space: O(numRows^2)
+	 */
 	public List<Integer> getRow(int rowIndex) {
 		int numRows = rowIndex + 1;
 
@@ -31,6 +36,11 @@ public class PascalsTriangleII {
 		return currentList;
 	}
 
+	/*
+	 * Time: O(numRows^2) -> Rows updates: 1 + 2 + 3 + .... +numRows => numRows*(numRows+1)/2 
+	 * 
+	 * Space: O(numRows)
+	 */
 	public List<Integer> getRow2(int rowIndex) {
 		List<Integer> result = new ArrayList<Integer>();
 		for (int i = 0; i < rowIndex + 1; i++) {
