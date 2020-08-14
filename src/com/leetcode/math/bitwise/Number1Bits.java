@@ -1,4 +1,4 @@
-package com.leetcode.math;
+package com.leetcode.math.bitwise;
 
 /*
  * 191. Number of 1 Bits

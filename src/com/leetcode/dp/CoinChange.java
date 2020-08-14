@@ -24,14 +24,14 @@ public class CoinChange {
 		// [0, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12]
 		dp[0] = 0;
 		
-		for (int i = 1; i <= amount; i++) {
+		for (int amt = 1; amt <= amount; amt++) {
 
-			for (int j = 0; j < coins.length; j++) {
-				if (coins[j] <= i) {
+			for (int i = 0; i < coins.length; i++) {
+				if (coins[i] <= amt) {
 					// [0, 1, 1, 2, 2, 1, 2, 2, 3, 3, 2, 3]
-					// dp[4] if coin 1 => dp[3] + 1, if coin 2 => dp[2] + 1
+					// dp[4] if coin 1 => dp[3] + 1 (coin 1 used), if coin 2 => dp[2] + 1 (coin 2 used)
 					// thus min is 2 => dp[4] = 2
-					dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1);
+					dp[amt] = Math.min(dp[amt], dp[amt - coins[i]] + 1);
 				}
 			}
 		}
