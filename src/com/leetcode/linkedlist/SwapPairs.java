@@ -6,6 +6,9 @@ package com.leetcode.linkedlist;
  */
 public class SwapPairs {
 
+	/*
+	 * Time: O(N)   Space: O(1)
+	 */
 	public ListNode swapPairs(ListNode head) {
 
 		if (head == null || head.next == null)
