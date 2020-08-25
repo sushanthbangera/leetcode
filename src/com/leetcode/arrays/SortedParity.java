@@ -6,7 +6,7 @@ package com.leetcode.arrays;
  */
 public class SortedParity {
 	/*
-	 * Time: O(N)  Space: O(1)
+	 * Time: O(N) Space: O(1)
 	 */
 	public int[] sortArrayByParity(int[] A) {
 		int evenIndex = -1;
