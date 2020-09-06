@@ -1,5 +1,7 @@
 package com.leetcode.strings;
 
+import java.util.function.Predicate;
+
 /*
  * 520. Detect Capital
  * https://leetcode.com/problems/detect-capital/
@@ -54,6 +56,23 @@ public class DetectCapital {
 	 */
 	public boolean detectCapitalUse3(String word) {
 		return word.matches("[A-Z]*|.[a-z]*");
+	}
+
+	/*
+	 * Advantage: need not check all the characters in case of invalid String
+	 */
+	public boolean detectCapitalUse4(String word) {
+		Predicate<Character> caseCheck = Character::isLowerCase;
+
+		if (Character.isUpperCase(word.charAt(0)) && Character.isUpperCase(word.charAt(1))) {
+			caseCheck = Character::isUpperCase;
+		}
+
+		for (int i = 1; i < word.length(); i++) {
+			if (!caseCheck.test(word.charAt(i)))
+				return false;
+		}
+		return true;
 	}
 
 }
