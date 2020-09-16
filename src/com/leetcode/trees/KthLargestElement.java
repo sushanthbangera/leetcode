@@ -8,6 +8,10 @@ import java.util.PriorityQueue;
  */
 public class KthLargestElement {
 
+	/*
+	 * Time: O(n*Log(k)) // every insert is log(k)
+	 * Space: O(Log(k))
+	 */
 	public int findKthLargest(int[] nums, int k) {
 
 		PriorityQueue<Integer> minHeap = new PriorityQueue<>(k); // minHeap of Size k initial capacity
