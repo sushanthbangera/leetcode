@@ -9,11 +9,12 @@ import com.leetcode.utils.ArrayUtils;
 /*
  * 39. Combination Sum
  * https://leetcode.com/problems/combination-sum/
+ * 
  */
 public class CombinationSum {
+	
 
 	public List<List<Integer>> combinationSum(int candidates[], int target) {
-
 		List<List<Integer>> resultList = new ArrayList<>();
 
 		Arrays.sort(candidates);
@@ -21,7 +22,7 @@ public class CombinationSum {
 		List<Integer> cur = new ArrayList<>();
 
 		recursiveCal(candidates, target, 0, resultList, cur);
-
+		
 		return resultList;
 	}
 
@@ -36,12 +37,33 @@ public class CombinationSum {
 			return;
 		}
 
+		// This prevents the tempList "cur" to add only if sum is less than the target
 		while (i < arr.length && target - arr[i] >= 0) {
 			cur.add(arr[i]);
 
 			recursiveCal(arr, target - arr[i], i, res, cur);
 			i++;
 			
+			cur.remove(cur.size() - 1);
+		}
+	}
+	
+	/*
+	 * The recursion is more here since element is added even if the target is crossed
+	 */
+	private void backtrack(int arr[], int target, int index, List<List<Integer>> res, List<Integer> cur) {
+		if (target < 0) {
+			return;
+		}
+
+		if (target == 0) {
+			res.add(new ArrayList<>(cur));
+			return;
+		}
+		
+		for (int i = index; i < arr.length; i++) {
+			cur.add(arr[i]);
+			backtrack(arr, target - arr[i], i, res, cur);
 			cur.remove(cur.size() - 1);
 		}
 	}
@@ -60,8 +82,7 @@ public class CombinationSum {
 			Object[] sub = subList.toArray();
 			
 			ArrayUtils.print(sub);
-			
-			System.out.println();
+
 		}
 	}
 }
