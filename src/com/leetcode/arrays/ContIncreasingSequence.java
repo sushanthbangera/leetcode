@@ -25,4 +25,10 @@ public class ContIncreasingSequence {
 		}
 		return maxLength;
 	}
+	
+	public static void main(String[] args) {
+		int nums[] = {1, 3, 5, 4, 7};
+		ContIncreasingSequence conIncSeq = new ContIncreasingSequence();
+		System.out.println(conIncSeq.findLengthOfLCIS(nums));
+	}
 }

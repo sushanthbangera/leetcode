@@ -59,7 +59,19 @@ public class LongestIncSubSequence {
 		int exclude = auxLengthOfLIS(nums, prevIndex, curPos + 1, memo);
 
 		memo[prevIndex + 1][curPos] = Math.max(include, exclude);
+		printMemo(memo);
 		return memo[prevIndex + 1][curPos];
+	}
+	
+	public void printMemo(int memo[][]) {
+		System.out.println("--------------------");
+		for (int i = 0; i < memo.length; i++) {
+			for (int j = 0; j < memo[0].length; j++) {
+				System.out.print(memo[i][j] + " ");
+			}
+			System.out.println();
+		}
+		System.out.println();
 	}
 
 	/*
@@ -74,16 +86,16 @@ public class LongestIncSubSequence {
 
 		dp[0] = 1;
 
-		int maxVal = 0, maxLength = 1;
+		int tempLen = 0, maxLength = 1;
 
 		for (int i = 1; i < nums.length; i++) {
-			maxVal = 0;
+			tempLen = 0;
 			for (int j = 0; j < i; j++) {
 				if (nums[j] < nums[i]) {
-					maxVal = Math.max(maxVal, dp[j]);
+					tempLen = Math.max(tempLen, dp[j]);
 				}
 			}
-			dp[i] = maxVal + 1;
+			dp[i] = tempLen + 1;
 			maxLength = Math.max(maxLength, dp[i]);
 		}
 		return maxLength;
@@ -110,9 +122,9 @@ public class LongestIncSubSequence {
 	}
 
 	public static void main(String[] args) {
-		int arr[] = { 10, 9, 2, 5, 3, 7, 101, 18 };
+		int arr[] = { 1, 3, 5, 4, 7 };
 		LongestIncSubSequence lis = new LongestIncSubSequence();
-		System.out.println(lis.lengthOfLIS4(arr));
+		System.out.println(lis.lengthOfLIS2(arr));
 	}
 
 }

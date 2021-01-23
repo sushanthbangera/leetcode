@@ -43,6 +43,7 @@ public class NextGreaterElementI {
 		return result;
 	}
 	
+	
 	public int[] nextGreaterElement2(int[] nums1, int[] nums2) {
 		
 		int len = nums1.length;
